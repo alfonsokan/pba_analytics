@@ -35,7 +35,7 @@ if "_mpg_played" not in st.session_state:
 
 
 
-df = pd.read_csv(r'datasets\compiled_stats.csv')
+df = pd.read_csv(r'datasets/compiled_stats.csv')
 
 with st.container():
 
