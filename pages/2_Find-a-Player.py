@@ -46,7 +46,7 @@ def chosen_df(stat_type):
         df = pd.read_csv(r'datasets/misc_stats_cleaned.csv').set_index('#')
     return df
 
-
+df = chosen_df(st.session_state._stat_type_find)
 
 shortened_teams_list = ['NONE', 'ALL'] + list(sorted(df['Team'].unique()))
 
