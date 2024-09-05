@@ -2,8 +2,7 @@
 This Streamlit app provides comprehensive analytics for the Philippine Basketball Association (PBA), covering a wide range of statistics. The data was meticulously web-scraped from basketball.realgm.com and processed using the Pandas library to enable dynamic filtering and analysis.
 
 
-
-https://github.com/user-attachments/assets/8909e54f-9502-4581-8303-5c9f63c5ff93
+https://github.com/user-attachments/assets/d5600d03-e0ed-417c-b814-67a3a7bbebae
 
 
 ## Installation
