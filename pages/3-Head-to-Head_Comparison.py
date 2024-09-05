@@ -3,8 +3,6 @@ import pandas as pd
 
 st.title('Head-to-Head Comparison 🆚')
 
-df = pd.read_csv(r'datasets\avg_stats.csv').set_index('#')
-
 col1, col2 = st.columns(2)
 
 # should only run once per session
