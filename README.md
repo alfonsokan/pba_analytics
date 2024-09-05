@@ -67,7 +67,7 @@ The above Python code snippet, sourced from `notebooks/Basketball_realgm_PBA_web
 
 <br />
 
-- 🌐 **Filtering**:
+- ⚙️ **Filtering**:
   -  Libraries used: `pandas`, `streamlit`
   - The pandas library was utilized to load the web-scraped dataframes and apply filters based on user input. The filtering interface was constructed using Streamlit widgets, with session state logic connecting widget selections to pandas operations
   - This code snippet from the Stat Scatter page illustrates how to implement the page logic using Streamlit's `session state` and `pandas`
