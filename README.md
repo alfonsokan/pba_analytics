@@ -3,6 +3,7 @@ This Streamlit app provides comprehensive analytics for the Philippine Basketbal
 
 ## Installation
 - Use the package manager pip to install the necessary libraries to run the application.
+- NOTE: If there are issues, make sure to add the line`pywin32==306` to the `requirements.txt` file.
 ```bash
 pip install -r requirements.txt
 ```
