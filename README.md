@@ -58,5 +58,5 @@ def table_scraper(url, class_name):
     return df
 ```
 
-The above Python code extracts a DataFrame from *basketball.realgm.com*. It fetches the page content, parses it to locate table headers and rows, and attempts to convert the data into a float format where possible.
+The above Python code snippet, sourced from `notebooks/Basketball_realgm_PBA_webscraper.ipynb` within this repository, extracts a DataFrame from basketball.realgm.com. It fetches the page content, parses it to locate table headers and rows, and attempts to convert the data into a float format where possible.
 
