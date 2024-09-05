@@ -22,7 +22,41 @@ streamlit run Home.py
 - 🛠️ **Customizable Visualizations**: Allow users to create and save custom visualizations, making it easier to track specific stats or trends over the course of a season.
 - 📊 **Team Analytics**: Expand the analysis to team-level statistics, offering insights into team performance, strengths, and weaknesses throughout the season.
 
-## How the App was Made
-- 🌐 Web Scraping: Data was extracted from basketball.realgm.com using Python's web scraping libraries. This allowed us to gather detailed statistics for PBA players participating in the 2023-2024 Philippine Cup.
-- 🐼 Pandas: The scraped data was cleaned, processed, and analyzed using the Pandas library. Pandas enabled us to manipulate the data efficiently, creating different statistical views such as Averages, Totals, Per 36 Minutes, and Advanced stats.
-- 📊 Streamlit Data Elements: Streamlit was used to create an interactive and user-friendly interface. Key features like the Find-a-Player, Head-to-Head Comparison, and Stat Scatter tools were built using Streamlit's data elements, making the app both dynamic and easy to navigate.
+## Methodology
+- 🌐 **Web Scraping**:
+  -  Libraries used: `pandas`,`bs4`,`requests`
+  -  Data was extracted from *basketball.realgm.com* using Python's web scraping libraries. This allowed us to gather detailed statistics for PBA players participating in the 2023-2024 Philippine Cup.
+
+```python
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+def table_scraper(url, class_name):
+    page = requests.get(url=url).text
+    soup = BeautifulSoup(page, 'html.parser')
+    header_cols = soup.find(class_=class_name).find('thead').find_all('th')
+    header_cols_cleaned = [header_col.text.strip() for header_col in header_cols]
+    row_data = soup.find(class_=class_name).find('tbody').find_all('tr')
+    df = pd.DataFrame(columns=header_cols_cleaned)
+
+    for index, row in enumerate(row_data):
+        content = [data.text for data in row.find_all('td')]
+        length = len(df)
+        df.loc[length] = content
+
+    for row in df.columns:
+        try:
+            # Attempt to convert the column to float type
+            df[row] = df[row].astype('float')
+            print(f"Successfully converted {row} to float.")
+        except ValueError:
+            # Skip conversion if an error occurs
+            print(f"Could not convert {row} to float, skipping.")
+            pass
+
+    return df
+```
+
+The above Python code extracts a DataFrame from *basketball.realgm.com*. It fetches the page content, parses it to locate table headers and rows, and attempts to convert the data into a float format where possible.
+
