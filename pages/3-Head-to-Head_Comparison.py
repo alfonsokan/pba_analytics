@@ -3,6 +3,8 @@ import pandas as pd
 
 st.title('Head-to-Head Comparison 🆚')
 
+df = pd.read_csv(r'datasets\avg_stats.csv').set_index('#')
+
 col1, col2 = st.columns(2)
 
 # should only run once per session
@@ -41,17 +43,16 @@ if "_chosen_stats_head" not in st.session_state:
 
 def chosen_df(stat_type):
     if stat_type == 'Averages':
-        df = pd.read_csv(r'datasets/avg_stats.csv').set_index('#')
+        df = pd.read_csv(r'datasets\avg_stats.csv').set_index('#')
     elif stat_type == 'Totals':
-        df = pd.read_csv(r'datasets/total_stats.csv').set_index('#')
+        df = pd.read_csv(r'datasets\total_stats.csv').set_index('#')
     elif stat_type == 'Per 36':
-        df = pd.read_csv(r'datasets/per36_stats.csv').set_index('#')
+        df = pd.read_csv(r'datasets\per36_stats.csv').set_index('#')
     elif stat_type == 'Advanced':
-        df = pd.read_csv(r'datasets/adv_stats_cleaned.csv').set_index('#')
+        df = pd.read_csv(r'datasets\adv_stats_cleaned.csv').set_index('#')
     else:
-        df = pd.read_csv(r'datasets/misc_stats_cleaned.csv').set_index('#')
+        df = pd.read_csv(r'datasets\misc_stats_cleaned.csv').set_index('#')
     return df
-
 
 df = chosen_df(st.session_state._stat_type_head)
 
