@@ -1,2 +1,8 @@
-# pba_data_viz
-# pba_analytics
+# PBA Analytics App
+This Streamlit app provides comprehensive analytics for the Philippine Basketball Association (PBA), covering a wide range of statistics. The data was meticulously web-scraped from basketball.realgm.com and processed using the Pandas library to enable dynamic filtering and analysis.
+
+## Installation
+Use the package manager pip to install the necessary libraries to run the application.
+```bash
+pip install -r requirements.txt
+```
