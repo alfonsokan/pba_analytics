@@ -60,3 +60,40 @@ def table_scraper(url, class_name):
 
 The above Python code snippet, sourced from `notebooks/Basketball_realgm_PBA_webscraper.ipynb` within this repository, extracts a DataFrame from basketball.realgm.com. It fetches the page content, parses it to locate table headers and rows, and attempts to convert the data into a float format where possible.
 
+- 🌐 **Filtering**:
+  -  Libraries used: `pandas`, `streamlit`
+  - The pandas library was utilized to load the web-scraped dataframes and apply filters based on user input. The filtering interface was constructed using Streamlit widgets, with session state logic connecting widget selections to pandas operations
+  - This code snippet from the Stat Scatter page illustrates how to implement the page logic using Streamlit's `session state` and `pandas`
+
+```python
+df = pd.read_csv(r'datasets\compiled_stats.csv')
+
+col1, col2 = st.columns(2)
+
+
+with col1:
+    st.selectbox('Y-axis', 
+                   options=relevant_filters,
+                   on_change=store_value,
+                   key='_y_axis')
+    
+with col2:
+    st.selectbox('X-axis', 
+                   options=relevant_filters,
+                   on_change=store_value,
+                   key='_x_axis')
+
+filtered_df = df[   (df['GP'] >= st.session_state._games_played)
+                ]
+
+chart = alt.Chart(filtered_df).mark_circle().encode(
+    alt.X(st.session_state._x_axis).scale(zero=False),
+    alt.Y(st.session_state._y_axis).scale(zero=False, padding=1),
+    color='Team',
+    size=st.session_state._y_axis,
+    description='Player'
+)
+
+
+st.altair_chart(chart)
+```
